@@ -16,34 +16,66 @@
         <label for="previous">Nhập</label>
         <input type="text" name="getValue" id="getValue"><br>
         <div class="btn-container">
-            <input type="button" value="1" onlick=display(1) class="number">
-            <input type="button" value="2" class="number">
-            <input type="button" value="3" class="number">
-            <input type="button" value="+" id="+">
+            <input type="button" value="1" onclick=display(1)>
+            <input type="button" value="2" onclick=display(2)>
+            <input type="button" value="3" onclick=display(3)>
+            <input type="button" value="+" onclick="calculate( '+')">
             <!--row2-->
-            <input type="button" value="4" class="number">
-            <input type="button" value="5" class="number">
-            <input type="button" value="6" class="number">
-            <input type="button" value="-" id="-">
+            <input type="button" value="4" onclick=display(4)>
+            <input type="button" value="5" onclick=display(5)>
+            <input type="button" value="6" onclick=display(6)>
+            <input type="button" value="-" onclick="calculate('-')">
             <!--row3-->
-            <input type="button" value="7" class="number">
-            <input type="button" value="8" class="number">
-            <input type="button" value="9" class="number">
-            <input type="button" value="*" id="*">
+            <input type="button" value="7" onclick=display(7)>
+            <input type="button" value="8" onclick=display(8)>
+            <input type="button" value="9" onclick=display(9)>
+            <input type="button" value="*" onclick="calculate( '*')">
             <!--row4-->
-            <input type="button" value="." id=".">
-            <input type="button" value="0" class="number">
-            <input type="button" value="=" id="=">
-            <input type="button" value="/" id="/">
+            <input type="button" value="." onclick="display( '.')">
+            <input type="button" value="0" onclick=display(0)>
+            <input type="button" value="<=" onclick="calculate( '<')">
+            <input type="button" value="/" onclick="calculate( '/')">
         </div>
     </div>
     <script>
         let dc = document
         let txtInput = dc.getElementById("getValue")
+        let txtOut = dc.getElementById("previous")
         let btnNumber = dc.getElementsByClassName("number")
-        let display = (x) => {
-            console.log("Cc")
-            txtInput.value += x
+        let isDot = false;
+        let prev = 0;
+        let current = 0;
+        let first = false;
+
+        function display(x) {
+            if (x == '.') {
+                if (isDot == false) {
+                    txtInput.value += '.';
+                    isDot = true;
+
+                }
+                return;
+            }
+            if (txtInput.value == '0') {
+                txtInput.value = x
+            } else
+                txtInput.value += x
+        }
+
+        function calculate(x) {
+            if (x == '+') {
+                prev += parseFloat(txtInput.value);
+            } else if (x == '-') {
+                prev -= parseFloat(txtInput.value);
+            } else if (x == '/') {
+                prev /= parseFloat(txtInput.value);
+            } else if (x == '*') {
+                prev *= parseFloat(txtInput.value);
+            }
+            current = 0;
+            txtOut.value = (prev)
+            txtInput.value = "0"
+
         }
     </script>
 </body>
