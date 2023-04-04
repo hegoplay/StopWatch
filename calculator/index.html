@@ -33,7 +33,7 @@
             <!--row4-->
             <input type="button" value="." onclick="display( '.')">
             <input type="button" value="0" onclick=display(0)>
-            <input type="button" value="<=" onclick="calculate( '<')">
+            <input type="button" value="<=" onclick="del()">
             <input type="button" value="/" onclick="calculate( '/')">
         </div>
     </div>
@@ -60,6 +60,13 @@
                 txtInput.value = x
             } else
                 txtInput.value += x
+        }
+
+        function del() {
+            let str = txtInput.value
+
+            txtInput.value = str.substr(0, str.length - 1)
+            if (str.substr(str.length - 1, str.length) = ".") isDot = true
         }
 
         function calculate(x) {
