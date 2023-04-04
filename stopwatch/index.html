@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Stopwatch</title>
+</head>
+
+<body>
+    <p><span id="second">00</span>: <span id="ms">00</span></p>
+    <input type="button" value="start" id="start">
+    <input type="button" value="stop" id="stop">
+    <input type="button" value="reset" id="reset">
+    <input type="button" value="save" id="save">
+    <p id="save-list"></p>
+    <script>
+        let dc = document
+        let ms = 0;
+        let second = 0;
+        let appendSave = dc.getElementById("save-list")
+        let appendMs = dc.getElementById("ms")
+        let appendSecond = dc.getElementById("second")
+        let btnStart = dc.getElementById("start")
+        let btnStop = dc.getElementById("stop")
+        let btnReset = dc.getElementById("reset")
+        let btnSave = dc.getElementById("save")
+        let interval;
+        btnStart.onclick = () => {
+            clearInterval(interval);
+            interval = setInterval(startTimer, 10)
+        }
+        btnStop.onclick = () => {
+            clearInterval(interval);
+        }
+        btnReset.onclick = () => {
+            clearInterval(interval);
+            ms = 0;
+            second = 0;
+            appendMs.innerHTML = "00"
+            appendSecond.innerHTML = "00"
+        }
+        btnSave.onclick = () => {
+            appendSave.innerHTML += ("<span>" + second + ":" + ms + "</span><br>")
+        }
+
+        function startTimer() {
+            ms++;
+            if (ms <= 9) {
+                appendMs.innerHTML = "0" + ms;
+            } else if (ms < 100) {
+                appendMs.innerHTML = ms;
+            } else if (ms >= 100) {
+                second++;
+                ms = 0;
+                appendMs.innerHTML = "00";
+            }
+            if (second <= 9) {
+
+                appendSecond.innerHTML = "0" + second;
+            }
+            if (second > 9) {
+                appendSecond.innerHTML = second;
+            }
+        }
+    </script>
+</body>
+
+</html>

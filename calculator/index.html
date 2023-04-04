@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div style="display: inline-block;width: 20%;justify-content: center;">
+        <label for="previous">Lịch sử</label>
+        <input type="text" name="previous" id="previous" readonly><br>
+        <label for="previous">Nhập</label>
+        <input type="text" name="getValue" id="getValue"><br>
+        <div class="btn-container">
+            <input type="button" value="1" onlick=display(1) class="number">
+            <input type="button" value="2" class="number">
+            <input type="button" value="3" class="number">
+            <input type="button" value="+" id="+">
+            <!--row2-->
+            <input type="button" value="4" class="number">
+            <input type="button" value="5" class="number">
+            <input type="button" value="6" class="number">
+            <input type="button" value="-" id="-">
+            <!--row3-->
+            <input type="button" value="7" class="number">
+            <input type="button" value="8" class="number">
+            <input type="button" value="9" class="number">
+            <input type="button" value="*" id="*">
+            <!--row4-->
+            <input type="button" value="." id=".">
+            <input type="button" value="0" class="number">
+            <input type="button" value="=" id="=">
+            <input type="button" value="/" id="/">
+        </div>
+    </div>
+    <script>
+        let dc = document
+        let txtInput = dc.getElementById("getValue")
+        let btnNumber = dc.getElementsByClassName("number")
+        let display = (x) => {
+            console.log("Cc")
+            txtInput.value += x
+        }
+    </script>
+</body>
+
+</html>
